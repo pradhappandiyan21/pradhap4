@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRADHAP D - Profile</title>
+
+  <style>
+    :root{
+      --bg:#f3f6ff;       /* light blue */
+      --bg2:#ffeef7;      /* light pink */
+      --card:#ffffff;     /* card bg */
+      --accent:#6c4bff;   /* purple-blue headings */
+      --accent-soft:#e1d9ff; /* soft accent */
+      --muted:#234;       /* dark text */
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg,var(--bg),var(--bg2));
+      margin:0;
+      color:#1a2a33;
+    }
+
+    .wrap{
+      max-width:1000px;
+      margin:32px auto;
+      padding:20px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:14px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      border:1px solid rgba(108,75,255,0.08);
+    }
+
+    .layout{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+    }
+
+    .sidebar{
+      width:260px;
+    }
+
+    .profile-box{
+      background:linear-gradient(145deg,var(--accent-soft),#ffffff);
+      padding:16px 14px 10px;
+      text-align:center;
+      border-radius:14px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.06);
+    }
+
+    .avatar{
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      background:#e6eef4;
+      display:inline-block;
+      object-fit:cover;
+      border:3px solid var(--accent);
+    }
+
+    h1{
+      font-size:22px;
+      margin:12px 0 4px;
+      color:var(--accent);
+      letter-spacing:0.5px;
+    }
+
+    .tag, .roll{
+      font-size:18px;
+      color:var(--muted);
+    }
+
+    .main{
+      flex:1;
+    }
+
+    section{
+      margin-bottom:18px;
+      padding-bottom:6px;
+      border-bottom:1px dashed rgba(0,0,0,0.06);
+    }
+
+    h2{
+      font-size:17px;
+      margin:0 0 8px;
+      color:var(--accent);
+      letter-spacing:0.4px;
+    }
+
+    p{
+      margin:0 0 8px;
+      line-height:1.5;
+    }
+
+    ul{
+      margin:0 0 8px 18px;
+      line-height:1.5;
+    }
+
+    .contact{
+      font-size:14px;
+    }
+    /* widgets (weather + map) */
+    .widgets{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-left:-8px; /* shift slightly left */
+    }
+
+    .card.small{
+      flex:1 1 260px;
+      background:linear-gradient(135deg,#ffffff,var(--accent-soft));
+    }
+
+    /* weather card */
+    #weather-card{
+      background: linear-gradient(135deg, rgba(232,244,255,0.85), rgba(255,255,255,0.85), rgba(230,219,255,0.85));
+      border-radius:14px;
+      padding:16px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.12);
+    }
+
+    /* map */
+    #map{
+      height:180px; /* same size as weather visually */
+      border-radius:6px;
+    }
+
+    @media (max-width:640px){
+      .layout{
+        flex-direction:column;
+      }
+      .sidebar{
+        width:100%;
+        text-align:center;
+      }
+      .avatar{
+        margin:0 auto;
+      }
+    }
+
+    .about{
+      background: rgba(255,255,255,0.55);
+      padding:14px;
+      border-radius:10px;
+    }
+
+  </style>
+
+  <!-- Leaflet CSS for map -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    crossorigin=""
+  />
+</head>
+<body>
+  <div class="wrap">
+    <div class="card layout">
+      <!-- LEFT SIDE -->
+      <aside class="sidebar">
+        <div class="profile-box">
+          <!-- your real photo file -->
+          <img src="myphoto.jpg" class="avatar" alt="Pradhap photo" />
+
+          <!-- name -->
+          <h1>PRADHAP D</h1>
+
+          <!-- roll number big & attractive -->
+          <div class="roll" style="font-size:24px; font-weight:bold; color:#8000ff; margin-top:12px;">
+            Roll: ED25B040
+          </div>
+
+          <!-- single combined tagline -->
+          <div class="tag" style="margin-top:10px; font-size:16px; color:#004400; line-height:1.4;">
+            Take it easy • Peace • Simple living &amp; growing • Success mindset
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT SIDE -->
+      <div class="main">
+        <section class="about">
+          <h2>About</h2>
+          <p>
+            I'm Pradhap, a first-year ED student who likes to keep things simple and chill.
+            I enjoy learning new skills at my own pace, and this webpage is one of my first
+            steps into web development. I believe in steady progress and doing what feels
+            right for me.
+          </p>
+        </section>
+
+        <section>
+          <h2>Hobbies</h2>
+          <ul>
+            <li>Playing chess</li>
+            <li>Scrolling and exploring things on my phone</li>
+            <li>Watching YouTube &amp; Instagram for fun and learning</li>
+            <li>Reading books whenever I feel like it</li>
+            <li>Playing outdoor games once in a while</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Goals</h2>
+          <ul>
+            <li>Improve my fitness and maintain a healthy routine</li>
+            <li>Focus on self-development and building good habits</li>
+            <li>Keep learning new things and upgrading my skills</li>
+            <li>Work towards achieving long-term success in my career</li>
+          </ul>
+        </section>
+
+        <section class="contact">
+          <h2>Contact</h2>
+          <p>Email: <strong>ed25b040@smail.iitm.ac.in</strong></p>
+        </section>
+
+        <!-- WEATHER + MAP WIDGETS -->
+        <div class="widgets">
+          <!-- Weather widget -->
+          <div class="card small" id="weather-card">
+            <h2>Current Weather</h2>
+            <p id="weather-city">Weather not loaded yet.</p>
+            <p id="weather-status"></p>
+            <p id="weather-temp"></p>
+            <p id="weather-extra"></p>
+          </div>
+
+          <!-- Map widget -->
+          <div class="card small">
+            <h2>My Location</h2>
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS for map -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    crossorigin=""
+  ></script>
+
+  <script>
+    // ========= 1. WEATHER WIDGET (WeatherAPI) =========
+    // Put your real API key from weatherapi.com here, inside quotes.
+    // Example: const API_KEY = "abc123YOURREALKEY";
+    const API_KEY = "3c568ecd76564770943153740250512"; // TODO: replace on your computer
+
+    // Put your city name here
+    const CITY = "Karur, Tamil Nadu"; // change if needed
+
+    const cityEl = document.getElementById("weather-city");
+    const statusEl = document.getElementById("weather-status");
+    const tempEl = document.getElementById("weather-temp");
+    const extraEl = document.getElementById("weather-extra");
+
+    if (!API_KEY || API_KEY === "YOUR_API_KEY_HERE") {
+      cityEl.textContent = "Add your WeatherAPI key in the code to load weather.";
+      statusEl.textContent = "(Go to weatherapi.com, create a free key, then paste it in API_KEY.)";
+    } else {
+      fetch(
+        `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(
+          CITY
+        )}&aqi=no`
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Weather API response not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          cityEl.textContent = `City: ${data.location.name}, ${
+            data.location.region
+          }`;
+          statusEl.textContent = `Condition: ${data.current.condition.text}`;
+          tempEl.textContent = `Temperature: ${data.current.temp_c} °C`;
+          extraEl.textContent = `Feels like: ${data.current.feelslike_c} °C | Humidity: ${data.current.humidity}%`;
+        })
+        .catch((error) => {
+          console.error(error);
+          cityEl.textContent = "Could not load weather.";
+          statusEl.textContent = "Check your API key, city name or network connection.";
+        });
+    }
+
+    // ========= 2. MAP WIDGET (Leaflet + OpenStreetMap) =========
+    // We wrap map code in a function and call it after the page finishes loading,
+    // so that `L` is definitely available and we avoid "L is not defined" errors.
+
+    function initMap() {
+      const mapDiv = document.getElementById("map");
+      if (!mapDiv) return;
+
+      if (typeof L === "undefined") {
+        console.error("Leaflet (L) is not available. Check if the Leaflet script loaded correctly.");
+        mapDiv.innerHTML = "Map could not be loaded.";
+        mapDiv.style.display = "flex";
+        mapDiv.style.alignItems = "center";
+        mapDiv.style.justifyContent = "center";
+        return;
+      }
+
+      // Replace these with your own latitude & longitude (from OpenStreetMap URL)
+      const myLat = 10.9600;  // example only – change to your city
+      const myLon = 78.0760;  // example only – change to your city
+
+      const map = L.map("map").setView([myLat, myLon], 12);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      L.marker([myLat, myLon])
+        .addTo(map)
+        .bindPopup("My residence city")
+        .openPopup();
+    }
+
+    if (document.readyState === "complete") {
+      initMap();
+    } else {
+      window.addEventListener("load", initMap);
+    }
+  </script>
+</body>
+</html>
